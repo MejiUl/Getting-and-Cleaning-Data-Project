@@ -2,6 +2,7 @@
 #
 #
 #Check if the file exists and unzips it
+run <- function(){
 if (!file.exists("CleanDataProject.zip")){
   temp <- "CleanDataProject.zip"
   download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",temp)
@@ -107,7 +108,7 @@ TidySet <- dcast(molten, Subject_ID + Activity ~ variable, mean)
 
 #We write it in a txt file
 write.table(TidySet, file="TidyDataSet.txt", sep=" ", row.names=FALSE)
-
+}
 
 
 

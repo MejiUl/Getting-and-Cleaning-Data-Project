@@ -80,3 +80,16 @@ The variables stated above correspond to the next names:
 66. "TotalBodyGyroJerkMag_Mean"
 67. "TotalBodyGyroJerkMag_StdDev"
 68. "Activity"
+
+### Units ####
+
+The variables with the prefix *Freq* were measured in Hertz, as the the variables with *accel* in their names their unit is $$m/s^{2}$$. Features with *gyro* measures the angular velocity, therfore it's unit is $$Rads/s$$ 
+
+The activity labes is composed of 6 diferent activities: 
+
+* Walking
+* Walking Upstairs
+* Walikng Downstairs
+* Sitting
+* Standing
+* Laying

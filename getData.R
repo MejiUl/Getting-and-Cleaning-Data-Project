@@ -1,21 +1,29 @@
+#Made by MejiUlises 21/06/2014
 #
 #
 #
-#
-activityList <- read.table("activity_labels.txt")
-featuresList <- read.table("features_info.txt")
+if (!file.exists("CleanDataProject.zip")){
+  temp <- "CleanDataProject.zip"
+  download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",temp)
+}
+if(!file.exists("UCI HAR Dataset")){
+  unzip("CleanDataProject.zip")
+}
+
+
+
+activityList <- read.table("./UCI HAR Dataset/activity_labels.txt")
+featuresList <- read.table("./UCI HAR Dataset/features.txt")
 
 #We read all the Training tables we will be using. 
-subjectTrain <- read.table("./train/subject_train.txt")             
-XTrain <- read.table("./train/X_Train.txt")
-YTrain <- read.table("./train/Y_Train.txt")
+subjectTrain <- read.table("./UCI HAR Dataset/./train/subject_train.txt")             
+XTrain <- read.table("./UCI HAR Dataset/./train/X_Train.txt")
+YTrain <- read.table("./UCI HAR Dataset/./train/Y_Train.txt")
 
 #We read all the Test tables we will be using. 
-subjectTest <- read.table("./test/subject_test.txt")             
-XTest <- read.table("./test/X_Test.txt")
-YTest <- read.table("./test/Y_Test.txt")
-
-
+subjectTest <- read.table("./UCI HAR Dataset/./test/subject_test.txt")             
+XTest <- read.table("./UCI HAR Dataset/./test/X_Test.txt")
+YTest <- read.table("./UCI HAR Dataset/./test/Y_Test.txt")
 
 #We define the columns we will use based on the specification. Check the cookbook for more details.
 #cols <- c(1:6, 41:46, 81:86, 121:126, 161:166, 201:202, 214:215, 227:228, 240:241, 253:254, 266:271, 345:350, 424:429, 503:504, 516:517, 529:530, 542:543)
@@ -93,7 +101,7 @@ colnames(MergedData) <- colnoms
 molten <- melt(MergedData, id=c("Subject_ID", "Activity"))
 
 #Summarise
-TidySet <- dcast(molten, Subject_ID+Activity ~ variable, mean)
+TidySet <- dcast(molten, Subject_ID + Activity ~ variable, mean)
 
 
 

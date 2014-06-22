@@ -18,9 +18,9 @@ activityList <- read.table("./UCI HAR Dataset/activity_labels.txt")
 featuresList <- read.table("./UCI HAR Dataset/features.txt")
 
 #We read all the Training tables we will be using. 
-subjectTrain <- read.table("./UCI HAR Dataset/./train/subject_train.txt")             
-XTrain <- read.table("./UCI HAR Dataset/./train/X_Train.txt")
-YTrain <- read.table("./UCI HAR Dataset/./train/Y_Train.txt")
+subjectTrain <- read.table("./UCI HAR Dataset/train/subject_train.txt")             
+XTrain <- read.table("./UCI HAR Dataset/train/X_Train.txt")
+YTrain <- read.table("./UCI HAR Dataset/train/Y_Train.txt")
 
 #We read all the Test tables we will be using. 
 subjectTest <- read.table("./UCI HAR Dataset/./test/subject_test.txt")             

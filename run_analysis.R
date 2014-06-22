@@ -1,7 +1,7 @@
 #Made by MejiUlises 21/06/2014
 #
 #
-#
+#Check if the file exists and unzips it
 if (!file.exists("CleanDataProject.zip")){
   temp <- "CleanDataProject.zip"
   download.file("https://d396qusza40orc.cloudfront.net/getdata%2Fprojectfiles%2FUCI%20HAR%20Dataset.zip",temp)
@@ -13,6 +13,7 @@ if(!file.exists("UCI HAR Dataset")){
 #Loading the libraries needed.
 library(reshape2)
 
+#Read the activity and features files 
 activityList <- read.table("./UCI HAR Dataset/activity_labels.txt")
 featuresList <- read.table("./UCI HAR Dataset/features.txt")
 
@@ -33,14 +34,12 @@ cols <- grep("mean\\(\\)|std\\(\\)", featuresList$V2)
 #Subset of the Train data set with the columns from cols and merged with the subject and Y_train data sets.
 XTrain <- XTrain[cols] 
 TrainMerg <- cbind(subjectTrain, XTrain, YTrain)
-#colnames(TrainMerg)[ncol(TrainMerg)] <- "Type"
 colnames(TrainMerg)[ncol(TrainMerg)] <- "Activity"
 colnames(TrainMerg)[1] <- "Subject_ID"
 
 #Subset of the Test data set with the columns from cols and merged with the subject and Y_test data sets.
 XTest <- XTest[cols]
 TestMerg <- cbind(subjectTest, XTest, YTest)
-#colnames(TestMerg)[ncol(TestMerg)] <- "Type"
 colnames(TestMerg)[ncol(TestMerg)] <- "Activity"
 colnames(TestMerg)[1] <- "Subject_ID"
 
@@ -52,6 +51,7 @@ MergedData <- merge(MergedData, activityList, by.x="Activity", by.y="V1")
 MergedData <- MergedData[order(MergedData$Subject_ID),]
 MergedData <- MergedData[,2:ncol(MergedData)]  #We delete the Activity (numbers) column
 
+#We label the features. This names were taken form the features.txt file
 colnoms <- c("Subject_ID",
              "TotalBodyAccel_Mean_X", "TotalBodyAccel_Mean_Y", "TotalBodyAccel_Mean_Z", 
              "TotalBodyAccel_StdDev_X", "TotalBodyAccel_StdDev_Y", "TotalBodyAccel_StdDev_Z",
@@ -96,6 +96,7 @@ colnoms <- c("Subject_ID",
              "TotalBodyGyroJerkMag_Mean", "TotalBodyGyroJerkMag_StdDev",
              "Activity")
 
+#Assign the names to the dataframe
 colnames(MergedData) <- colnoms
 
 #Melt the data set so we can summarise

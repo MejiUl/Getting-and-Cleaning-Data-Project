@@ -70,6 +70,11 @@ molten <- melt(MergedData, id=c("Subject_ID", "Activity"))
 TidySet <- dcast(molten, Subject_ID + Activity ~ variable, mean)
 ```
 
-### Known Issuses ###
+### How to Run the Srcipt ###
 
-When 
+To run the *run_analysis.R* script, you must have installed the *reshape2* package. Once you downloaded the script, you must load it into RStudio by using the source command and calling the function that does everything explained on this text. This is done by running the following code: 
+
+```{r}
+source("run_analysis.R")
+run()  #This is the name of the function
+```

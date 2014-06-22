@@ -76,5 +76,7 @@ To run the *run_analysis.R* script, you must have installed the *reshape2* packa
 
 ```{r}
 source("run_analysis.R")
-run()  #This is the name of the function
+run()  #This is the name of the function in the script
 ```
+
+This code will write a text file in your working directory with the tidy Data Set as specified in the project. *Note: If you dont have the zip file in your working directory under the name of "CleanDataProject.zip" the script will automatically start to download it and unzipt in the working directory*

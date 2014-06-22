@@ -12,7 +12,7 @@ We used a total of 68 variables according to what was specified in the project. 
 
 The variables stated above correspond to the next names:
 
-1. "Subject_ID",
+1. "Subject_ID"
 2. "TotalBodyAccel_Mean_X"
 3. "TotalBodyAccel_Mean_Y"
 4. "TotalBodyAccel_Mean_Z", 
